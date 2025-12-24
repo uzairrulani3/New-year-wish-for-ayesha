@@ -69,3 +69,7 @@ body {
   font-size: 1.2rem;
   font-weight: bold;
 }
+
+.red-heart {
+  color: #ff0033;
+}
