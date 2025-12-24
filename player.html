@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy New Year Ayesha ✨</title>
+
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #3b0a6f, #1b0035);
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+}
+
+iframe {
+  border: none;
+  width: 100vw;
+  height: 100vh;
+}
+
+#startScreen {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #4b0f82, #1b0035);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  color: white;
+  text-align: center;
+}
+
+#startScreen h1 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+#startScreen p {
+  font-size: 1rem;
+  opacity: 0.85;
+  margin-bottom: 22px;
+}
+
+#startBtn {
+  background: linear-gradient(90deg, #ff4f8b, #ff88c2);
+  border: none;
+  border-radius: 999px;
+  padding: 14px 30px;
+  color: white;
+  font-size: 1.1rem;
+  box-shadow: 0 10px 25px rgba(255,79,139,.5);
+}
+</style>
+</head>
+
+<body>
+
+<div id="startScreen">
+  <h1>Happy New Year, Ayesha ✨</h1>
+  <p>Tap to begin the magic</p>
+  <button id="startBtn">Start the Magic ✨</button>
+</div>
+
+<audio id="bgm" loop>
+  <source src="audio/newyear.mp3" type="audio/mpeg">
+</audio>
+
+<iframe id="frame" src="index.html"></iframe>
+
+<script>
+const music = document.getElementById("bgm");
+const start = document.getElementById("startScreen");
+const btn = document.getElementById("startBtn");
+
+btn.addEventListener("click", () => {
+  music.currentTime = 0;
+  music.play();
+  start.style.opacity = "0";
+  setTimeout(() => start.style.display = "none", 600);
+});
+</script>
+
+</body>
+</html>
