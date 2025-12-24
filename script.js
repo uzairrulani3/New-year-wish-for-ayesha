@@ -1,12 +1,18 @@
 window.addEventListener("DOMContentLoaded", () => {
   const music = document.getElementById("bgMusic");
-  if (!music) return;
+  const container = document.querySelector(".container");
+
+  if (!music || !container) return;
 
   function startMusic() {
     music.currentTime = 23;
     music.play();
     localStorage.setItem("musicPlaying", "true");
-    document.body.classList.add("magic-active");
+
+    // Activate visual magic
+    container.classList.add("magic-active");
+
+    // Start love rain
     loveRain();
   }
 
@@ -21,12 +27,11 @@ window.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("musicPlaying") === "true") {
     const savedTime = localStorage.getItem("musicTime");
     if (savedTime) music.currentTime = savedTime;
-    music.currentTime = savedTime;
     music.play();
   }
 });
 
-// LOVE RAIN EFFECT
+// 💖 LOVE RAIN EFFECT
 function loveRain() {
   for (let i = 0; i < 40; i++) {
     const love = document.createElement("div");
@@ -42,7 +47,7 @@ function loveRain() {
   }
 }
 
-// Love animation CSS injected safely
+// 🎬 Inject Love Animation CSS
 const loveStyle = document.createElement("style");
 loveStyle.innerHTML = `
 @keyframes fallLove {
