@@ -77,3 +77,23 @@ body {
 .red-heart {
   color: #ff0033;
 }
+
+@media (max-width: 600px) {
+  body {
+    font-size: 20px;
+  }
+
+  .container {
+    padding: 50px 35px;
+    max-width: 92%;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .button, .music-btn {
+    font-size: 1.05rem;
+    padding: 14px 28px;
+  }
+}
