@@ -97,3 +97,31 @@ body {
     padding: 14px 28px;
   }
 }
+
+@media (max-width: 600px) {
+  body {
+    font-size: 21px;
+  }
+
+  .container {
+    padding: 50px 38px;
+    max-width: 94%;
+  }
+
+  h1 {
+    font-size: 1.9rem;
+  }
+
+  p {
+    font-size: 1.05rem;
+  }
+
+  .button, .music-btn {
+    font-size: 1.1rem;
+    padding: 15px 30px;
+  }
+
+  .gallery img {
+    border-radius: 16px;
+  }
+}
