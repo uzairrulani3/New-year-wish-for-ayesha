@@ -1,10 +1,14 @@
 window.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".container");
 
-  if (!container) return;
-
-  // 🌟 Start floating stars immediately
   startSparkles();
+
+  window.activateMagic = () => {
+    if (!container) return;
+
+    container.classList.add("magic-active");
+    loveRain();
+  };
 });
 
 // 💖 Love rain effect
@@ -39,7 +43,7 @@ function startSparkles() {
   }
 }
 
-// 🎬 Inject animations
+// 🎬 Animations
 const style = document.createElement("style");
 style.innerHTML = `
 @keyframes fallLove {
