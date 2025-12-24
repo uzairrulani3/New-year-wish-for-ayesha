@@ -4,6 +4,7 @@ function playMusic() {
   music.currentTime = 23;
   music.play();
   localStorage.setItem("musicPlaying", "true");
+  loveRain();
 }
 
 window.addEventListener("beforeunload", () => {
