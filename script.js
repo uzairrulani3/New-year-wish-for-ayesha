@@ -19,3 +19,9 @@ style.innerHTML = `
 }
 `;
 document.head.appendChild(style);
+
+function playMusic() {
+  const music = document.getElementById("bgMusic");
+  music.currentTime = 23;
+  music.play();
+}
