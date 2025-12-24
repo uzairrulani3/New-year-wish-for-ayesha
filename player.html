@@ -53,6 +53,8 @@ iframe {
   font-size: 1.1rem;
   box-shadow: 0 10px 25px rgba(255,79,139,.5);
 }
+  .hide { opacity: 0; }
+  
 </style>
 </head>
 
@@ -76,13 +78,12 @@ const start = document.getElementById("startScreen");
 const btn = document.getElementById("startBtn");
 
 btn.addEventListener("click", () => {
-  if (music.paused) {
-    music.currentTime = 0;
-    music.play();
-  }
+  music.play().catch(()=>{});
+  start.classList.add("hide");
 
-  start.style.opacity = "0";
-  setTimeout(() => start.style.display = "none", 600);
+  setTimeout(() => {
+    start.style.display = "none";
+  }, 600);
 });
 </script>
 
