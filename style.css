@@ -63,3 +63,9 @@ body {
   cursor: pointer;
   box-shadow: 0 0 18px rgba(255,126,179,0.6);
 }
+
+.final-line {
+  color: #ffb6ff;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
