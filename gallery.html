@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Moments 📸</title>
-  <link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Moments 📸</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+<div class="page">
 
-<audio id="bgMusic" loop>
-  <source src="song.mp3" type="audio/mpeg">
-</audio>
+<h1>Our Moments 📸</h1>
 
-<div class="container glow">
-  <h1>Our Moments 📸</h1>
-
+<div class="card">
   <div class="gallery">
     <img src="images/ny1.jpg">
     <img src="images/ny2.jpg">
     <img src="images/ny3.jpg">
     <img src="images/ny4.jpg">
   </div>
-
-  <a href="index.html" class="button">Back</a>
 </div>
 
-<script src="script.js"></script>
+<button onclick="parent.document.getElementById('frame').src='index.html'">
+Back 💖
+</button>
 
+</div>
 </body>
 </html>
