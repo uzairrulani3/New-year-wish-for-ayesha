@@ -67,9 +67,10 @@ body {
   color: white;
   cursor: pointer;
   box-shadow: 
-    0 0 10px rgba(255, 79, 154, 0.6),
-    0 0 25px rgba(255, 79, 154, 0.5),
-    0 0 45px rgba(255, 79, 154, 0.4);
+  0 0 12px rgba(255, 79, 154, 0.9),
+  0 0 28px rgba(255, 79, 154, 0.7),
+  0 0 60px rgba(255, 79, 154, 0.6),
+  0 0 90px rgba(255, 79, 154, 0.4);
   animation: pulseGlow 2s infinite alternate;
   transition: transform 0.2s ease;
 }
@@ -81,15 +82,19 @@ body {
 @keyframes pulseGlow {
   from {
     box-shadow: 
-      0 0 10px rgba(255, 79, 154, 0.6),
-      0 0 25px rgba(255, 79, 154, 0.5),
-      0 0 45px rgba(255, 79, 154, 0.4);
+      
+0 0 12px rgba(255, 79, 154, 0.9),
+0 0 28px rgba(255, 79, 154, 0.7),
+0 0 60px rgba(255, 79, 154, 0.6),
+0 0 90px rgba(255, 79, 154, 0.4);
+    
   }
   to {
     box-shadow: 
-      0 0 20px rgba(255, 79, 154, 0.9),
-      0 0 40px rgba(255, 79, 154, 0.7),
-      0 0 70px rgba(255, 79, 154, 0.6);
+0 0 18px rgba(255, 79, 154, 1),
+0 0 40px rgba(255, 79, 154, 0.85),
+0 0 80px rgba(255, 79, 154, 0.7),
+0 0 120px rgba(255, 79, 154, 0.5);
   }
 }
 
@@ -129,4 +134,14 @@ body {
   .gallery img {
     border-radius: 16px;
   }
+}
+
+.container {
+  position: relative;
+  overflow: visible;
+}
+
+.music-btn {
+  position: relative;
+  z-index: 2;
 }
