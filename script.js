@@ -1,40 +1,10 @@
 window.addEventListener("DOMContentLoaded", () => {
-  const music = document.getElementById("bgMusic");
   const container = document.querySelector(".container");
 
-  if (!music || !container) return;
+  if (!container) return;
 
   // 🌟 Start floating stars immediately
   startSparkles();
-
-  function startMusic() {
-    music.currentTime = 23;
-    music.play();
-    localStorage.setItem("musicPlaying", "true");
-
-    // activate visual magic
-    container.classList.add("magic-active");
-
-    // start love rain
-    loveRain();
-  }
-
-  window.startMusic = startMusic;
-
-  // Save music position
-  window.addEventListener("beforeunload", () => {
-    if (!music.paused) {
-      localStorage.setItem("musicTime", music.currentTime);
-    }
-  });
-
-  // Resume music on page load
-  if (localStorage.getItem("musicPlaying") === "true") {
-    const savedTime = localStorage.getItem("musicTime");
-    if (savedTime) music.currentTime = savedTime;
-    music.play();
-    container.classList.add("magic-active");
-  }
 });
 
 // 💖 Love rain effect
@@ -53,7 +23,7 @@ function loveRain() {
   }
 }
 
-// 🌟 Floating sparkle stars (always on)
+// 🌟 Floating sparkle stars
 function startSparkles() {
   for (let i = 0; i < 35; i++) {
     const star = document.createElement("div");
