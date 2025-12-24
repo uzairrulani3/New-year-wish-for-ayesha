@@ -20,6 +20,30 @@ window.addEventListener("load", () => {
   }
 });
 
+function loveRain() {
+  for(let i=0;i<40;i++){
+    let love = document.createElement("div");
+    love.innerHTML = "I love you ❤️❤️";
+    love.style.position = "fixed";
+    love.style.top = "-10vh";
+    love.style.left = Math.random()*100 + "vw";
+    love.style.fontSize = "1rem";
+    love.style.opacity = Math.random();
+    love.style.pointerEvents = "none";
+    love.style.animation = "fallLove " + (Math.random()*4+4) + "s linear infinite";
+    document.body.appendChild(love);
+  }
+}
+
+const loveStyle = document.createElement("style");
+loveStyle.innerHTML = `
+@keyframes fallLove {
+  0% { transform: translateY(-10vh); }
+  100% { transform: translateY(110vh); }
+}
+`;
+document.head.appendChild(loveStyle);
+
 // Sparkle effect
 for(let i=0;i<25;i++){
   let spark = document.createElement("div");
