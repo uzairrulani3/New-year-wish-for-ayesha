@@ -28,27 +28,22 @@ function loveRain() {
   }
 }
 
-window.activateMagic = () => {
+function activateMagic() {
   const container = document.querySelector(".container");
-  if (!container) return;
-
-  container.classList.add("magic-active");
-  loveRain();
-};
-
-window.addEventListener("load", () => {
+  if (container) container.classList.add("magic-active");
   startSparkles();
+  loveRain();
+}
+
+// Listen for Start button from player.html
+window.addEventListener("message", (e) => {
+  if (e.data === "startMagic") activateMagic();
 });
 
-// 🎬 Animations
+// Animations
 const style = document.createElement("style");
 style.innerHTML = `
-@keyframes fallLove {
-  to { transform: translateY(120vh); }
-}
-@keyframes floatStar {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-120vh); }
-}
+@keyframes fallLove { to { transform: translateY(120vh); } }
+@keyframes floatStar { from { transform: translateY(0); } to { transform: translateY(-120vh); } }
 `;
 document.head.appendChild(style);
