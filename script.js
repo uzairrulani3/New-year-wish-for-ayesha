@@ -1,17 +1,18 @@
-window.addEventListener("DOMContentLoaded", () => {
-  const container = document.querySelector(".container");
+function startSparkles() {
+  for (let i = 0; i < 35; i++) {
+    const star = document.createElement("div");
+    star.innerText = "✨";
+    star.style.position = "fixed";
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.top = Math.random() * 100 + "vh";
+    star.style.fontSize = Math.random() * 12 + 10 + "px";
+    star.style.opacity = Math.random();
+    star.style.pointerEvents = "none";
+    star.style.animation = "floatStar " + (Math.random() * 5 + 6) + "s linear infinite";
+    document.body.appendChild(star);
+  }
+}
 
-  startSparkles();
-
-  window.activateMagic = () => {
-    if (!container) return;
-
-    container.classList.add("magic-active");
-    loveRain();
-  };
-});
-
-// 💖 Love rain effect
 function loveRain() {
   for (let i = 0; i < 40; i++) {
     const love = document.createElement("div");
@@ -27,21 +28,17 @@ function loveRain() {
   }
 }
 
-// 🌟 Floating sparkle stars
-function startSparkles() {
-  for (let i = 0; i < 35; i++) {
-    const star = document.createElement("div");
-    star.innerText = "✨";
-    star.style.position = "fixed";
-    star.style.left = Math.random() * 100 + "vw";
-    star.style.top = Math.random() * 100 + "vh";
-    star.style.fontSize = Math.random() * 12 + 10 + "px";
-    star.style.opacity = Math.random();
-    star.style.pointerEvents = "none";
-    star.style.animation = "floatStar " + (Math.random() * 5 + 6) + "s linear infinite";
-    document.body.appendChild(star);
-  }
-}
+window.activateMagic = () => {
+  const container = document.querySelector(".container");
+  if (!container) return;
+
+  container.classList.add("magic-active");
+  loveRain();
+};
+
+window.addEventListener("load", () => {
+  startSparkles();
+});
 
 // 🎬 Animations
 const style = document.createElement("style");
