@@ -1,3 +1,26 @@
+const music = document.getElementById("bgMusic");
+
+function playMusic() {
+  music.currentTime = 23;
+  music.play();
+  localStorage.setItem("musicPlaying", "true");
+}
+
+window.addEventListener("beforeunload", () => {
+  if (!music.paused) {
+    localStorage.setItem("musicTime", music.currentTime);
+  }
+});
+
+window.addEventListener("load", () => {
+  if (localStorage.getItem("musicPlaying") === "true") {
+    const savedTime = localStorage.getItem("musicTime");
+    if (savedTime) music.currentTime = savedTime;
+    music.play();
+  }
+});
+
+// floating sparkle effect
 for(let i=0;i<25;i++){
   let spark = document.createElement("div");
   spark.innerHTML = "✨";
@@ -19,9 +42,3 @@ style.innerHTML = `
 }
 `;
 document.head.appendChild(style);
-
-function playMusic() {
-  const music = document.getElementById("bgMusic");
-  music.currentTime = 23;
-  music.play();
-}
