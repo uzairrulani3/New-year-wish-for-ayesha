@@ -1,69 +1,25 @@
-const music = document.getElementById("bgMusic");
+window.addEventListener("DOMContentLoaded", () => {
+  const music = document.getElementById("bgMusic");
 
-function playMusic() {
-  music.currentTime = 23;
-  music.play();
-  localStorage.setItem("musicPlaying", "true");
-  loveRain();
-}
+  if (!music) return;
 
-window.addEventListener("beforeunload", () => {
-  if (!music.paused) {
-    localStorage.setItem("musicTime", music.currentTime);
+  function startMusic() {
+    music.currentTime = 23;
+    music.play();
+    localStorage.setItem("musicPlaying", "true");
   }
-});
 
-window.addEventListener("load", () => {
+  window.startMusic = startMusic;
+
+  window.addEventListener("beforeunload", () => {
+    if (!music.paused) {
+      localStorage.setItem("musicTime", music.currentTime);
+    }
+  });
+
   if (localStorage.getItem("musicPlaying") === "true") {
     const savedTime = localStorage.getItem("musicTime");
     if (savedTime) music.currentTime = savedTime;
     music.play();
   }
 });
-
-function loveRain() {
-  for(let i=0;i<40;i++){
-    let love = document.createElement("div");
-    love.innerHTML = "I love you ❤️❤️";
-    love.style.position = "fixed";
-    love.style.top = "-10vh";
-    love.style.left = Math.random()*100 + "vw";
-    love.style.fontSize = "1rem";
-    love.style.opacity = Math.random();
-    love.style.pointerEvents = "none";
-    love.style.animation = "fallLove " + (Math.random()*4+4) + "s linear infinite";
-    document.body.appendChild(love);
-  }
-}
-
-const loveStyle = document.createElement("style");
-loveStyle.innerHTML = `
-@keyframes fallLove {
-  0% { transform: translateY(-10vh); }
-  100% { transform: translateY(110vh); }
-}
-`;
-document.head.appendChild(loveStyle);
-
-// Sparkle effect
-for(let i=0;i<25;i++){
-  let spark = document.createElement("div");
-  spark.innerHTML = "✨";
-  spark.style.position = "fixed";
-  spark.style.top = Math.random()*100 + "vh";
-  spark.style.left = Math.random()*100 + "vw";
-  spark.style.fontSize = Math.random()*18 + 12 + "px";
-  spark.style.opacity = Math.random();
-  spark.style.pointerEvents = "none";
-  spark.style.animation = "float " + (Math.random()*5+5) + "s linear infinite";
-  document.body.appendChild(spark);
-}
-
-const style = document.createElement("style");
-style.innerHTML = `
-@keyframes float {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-120vh); }
-}
-`;
-document.head.appendChild(style);
