@@ -1,0 +1,12 @@
+.glow {
+  box-shadow: 0 0 25px rgba(255,255,255,0.4);
+}
+
+.highlight {
+  color: #ffdf6c;
+  font-size: 1.1rem;
+}
+
+body {
+  background: linear-gradient(135deg, #1a0033, #330066, #000033);
+}
