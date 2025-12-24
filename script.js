@@ -4,13 +4,15 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (!music || !container) return;
 
-  // 🎵 Start Music + Magic
+  // 🌟 Start floating stars immediately
+  startSparkles();
+
   function startMusic() {
     music.currentTime = 23;
     music.play();
     localStorage.setItem("musicPlaying", "true");
 
-    // activate visual mood
+    // activate visual magic
     container.classList.add("magic-active");
 
     // start love rain
@@ -19,25 +21,23 @@ window.addEventListener("DOMContentLoaded", () => {
 
   window.startMusic = startMusic;
 
-  // save playback position
+  // Save music position
   window.addEventListener("beforeunload", () => {
     if (!music.paused) {
       localStorage.setItem("musicTime", music.currentTime);
     }
   });
 
-  // resume music if already started
+  // Resume music on page load
   if (localStorage.getItem("musicPlaying") === "true") {
     const savedTime = localStorage.getItem("musicTime");
     if (savedTime) music.currentTime = savedTime;
     music.play();
+    container.classList.add("magic-active");
   }
-
-  // 🌟 start ambient stars immediately
-  startSparkles();
 });
 
-// 💖 Love Rain
+// 💖 Love rain effect
 function loveRain() {
   for (let i = 0; i < 40; i++) {
     const love = document.createElement("div");
@@ -53,7 +53,7 @@ function loveRain() {
   }
 }
 
-// 🌟 Ambient Sparkles (always on)
+// 🌟 Floating sparkle stars (always on)
 function startSparkles() {
   for (let i = 0; i < 35; i++) {
     const star = document.createElement("div");
@@ -70,8 +70,8 @@ function startSparkles() {
 }
 
 // 🎬 Inject animations
-const effectsStyle = document.createElement("style");
-effectsStyle.innerHTML = `
+const style = document.createElement("style");
+style.innerHTML = `
 @keyframes fallLove {
   to { transform: translateY(120vh); }
 }
@@ -80,4 +80,4 @@ effectsStyle.innerHTML = `
   100% { transform: translateY(-120vh); }
 }
 `;
-document.head.appendChild(effectsStyle);
+document.head.appendChild(style);
