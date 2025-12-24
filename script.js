@@ -20,7 +20,7 @@ window.addEventListener("load", () => {
   }
 });
 
-// floating sparkle effect
+// Sparkle effect
 for(let i=0;i<25;i++){
   let spark = document.createElement("div");
   spark.innerHTML = "✨";
