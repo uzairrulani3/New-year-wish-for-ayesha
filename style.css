@@ -53,13 +53,13 @@ body {
 }
 
 .music-btn {
-  margin-top: 20px;
-  padding: 14px 28px;
+  margin-top: 25px;
+  padding: 14px 30px;
   border-radius: 30px;
   border: none;
   font-size: 1rem;
   background: linear-gradient(135deg, #ff7eb3, #ff758c);
   color: white;
   cursor: pointer;
-  box-shadow: 0 0 15px rgba(255,126,179,0.6);
+  box-shadow: 0 0 18px rgba(255,126,179,0.6);
 }
