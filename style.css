@@ -145,3 +145,7 @@ body {
   position: relative;
   z-index: 2;
 }
+.magic-active {
+  filter: brightness(1.05) saturate(1.15) contrast(1.05);
+  transition: filter 1s ease;
+}
