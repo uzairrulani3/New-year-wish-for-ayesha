@@ -69,7 +69,7 @@ iframe {
 </div>
 
 <audio id="bgm" preload="auto" loop>
-  <source src="audio/newyear.mp3" type="audio/mpeg">
+  <source src="song.mp3" type="audio/mpeg">
 </audio>
 
 <iframe id="frame" src="index.html"></iframe>
@@ -80,12 +80,15 @@ const start = document.getElementById("startScreen");
 const btn = document.getElementById("startBtn");
 
 btn.addEventListener("click", () => {
+  music.currentTime = 0;
   music.play().catch(()=>{});
-  start.classList.add("hide");
 
-  setTimeout(() => {
-    start.style.display = "none";
-  }, 600);
+  // Trigger magic inside iframe
+  const frame = document.getElementById("frame");
+  frame.contentWindow.postMessage("startMagic", "*");
+
+  start.classList.add("hide");
+  setTimeout(() => start.style.display = "none", 600);
 });
 </script>
 
