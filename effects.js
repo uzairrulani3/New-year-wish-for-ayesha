@@ -1,10 +1,9 @@
-const effectsLayer = document.getElementById("global-effects");
-
+let effectsLayer;
 let starsStarted = false;
 let rainTimer = null;
 
 function startStars() {
-  if (starsStarted) return;
+  if (starsStarted || !effectsLayer) return;
   starsStarted = true;
 
   for (let i = 0; i < 40; i++) {
@@ -21,6 +20,8 @@ function startStars() {
 }
 
 function dropLove() {
+  if (!effectsLayer) return;
+
   const love = document.createElement("div");
   love.className = "love";
   love.innerText = "I love you ❤️❤️";
@@ -39,6 +40,10 @@ function startLoveRain() {
   dropLove();
   rainTimer = setInterval(dropLove, 500);
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+  effectsLayer = document.getElementById("global-effects");
+});
 
 window.addEventListener("message", e => {
   if (e.data === "startMagic") {
