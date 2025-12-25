@@ -19,6 +19,7 @@ iframe {
   height: 100vh;
 }
 
+/* Start screen */
 #startScreen {
   position: fixed;
   inset: 0;
@@ -54,9 +55,17 @@ iframe {
   box-shadow: 0 10px 25px rgba(255,79,139,.5);
 }
 
-.hide {
-  opacity: 0;
+.hide { opacity: 0; }
+
+/* Magic visuals */
+.star, .love {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
 }
+
+@keyframes fallLove { to { transform: translateY(120vh); } }
+@keyframes floatStar { from { transform: translateY(0); } to { transform: translateY(-120vh); } }
 </style>
 </head>
 
@@ -79,13 +88,45 @@ const music = document.getElementById("bgm");
 const start = document.getElementById("startScreen");
 const btn = document.getElementById("startBtn");
 
+let starsStarted = false;
+let rainTimer = null;
+
+function startStars() {
+  if (starsStarted) return;
+  starsStarted = true;
+
+  for (let i = 0; i < 35; i++) {
+    const star = document.createElement("div");
+    star.className = "star";
+    star.innerText = "✨";
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.top = Math.random() * 100 + "vh";
+    star.style.fontSize = Math.random() * 12 + 10 + "px";
+    star.style.opacity = Math.random();
+    star.style.animation = "floatStar " + (Math.random() * 5 + 6) + "s linear infinite";
+    document.body.appendChild(star);
+  }
+}
+
+function dropLove() {
+  const love = document.createElement("div");
+  love.className = "love";
+  love.innerText = "I love you ❤️❤️";
+  love.style.left = Math.random() * 100 + "vw";
+  love.style.top = "-10vh";
+  love.style.fontSize = "1rem";
+  love.style.opacity = Math.random();
+  love.style.animation = "fallLove 6s linear";
+  document.body.appendChild(love);
+  setTimeout(() => love.remove(), 6000);
+}
+
 btn.addEventListener("click", () => {
   music.currentTime = 28;
   music.play().catch(()=>{});
 
-  // Trigger magic inside iframe
-  const frame = document.getElementById("frame");
-  frame.contentWindow.postMessage("startMagic", "*");
+  startStars();
+  rainTimer = setInterval(dropLove, 500);
 
   start.classList.add("hide");
   setTimeout(() => start.style.display = "none", 600);
