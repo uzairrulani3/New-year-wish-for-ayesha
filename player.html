@@ -73,15 +73,20 @@ btn.addEventListener("click", () => {
   music.currentTime = 28;
   music.play();
 
-  // tell the shell to start all visuals
-  document.getElementById("frame")
-    .contentWindow
-    .postMessage("startMagic", "*");
+  const frame = document.getElementById("frame");
+
+  // wait for shell to be ready before messaging
+  if (frame.contentWindow) {
+    frame.contentWindow.postMessage("startMagic", "*");
+  } else {
+    frame.addEventListener("load", () => {
+      frame.contentWindow.postMessage("startMagic", "*");
+    }, { once: true });
+  }
 
   start.classList.add("hide");
   setTimeout(() => start.style.display = "none", 600);
 });
 </script>
-
 </body>
 </html>
