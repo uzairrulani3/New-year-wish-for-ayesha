@@ -44,7 +44,7 @@ function activateMagic() {
   if (container) container.classList.add("magic-active");
 
   startSparkles();
-  setInterval(loveRain, 700);
+  setInterval(loveRain, 500);
 }
 
 window.addEventListener("message", (e) => {
