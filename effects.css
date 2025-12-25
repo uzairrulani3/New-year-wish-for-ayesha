@@ -1,0 +1,16 @@
+.star, .love {
+  position: absolute;
+  pointer-events: none;
+  color: white;
+  text-shadow: 0 0 6px rgba(255,255,255,.8);
+  z-index: 9999;
+}
+
+@keyframes fallLove {
+  to { transform: translateY(120vh); }
+}
+
+@keyframes floatStar {
+  from { transform: translateY(0); }
+  to { transform: translateY(-120vh); }
+}
