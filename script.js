@@ -1,4 +1,5 @@
 let magicActive = false;
+let rainInterval = null;
 
 function startSparkles() {
   if (document.querySelector(".star")) return;
@@ -19,8 +20,6 @@ function startSparkles() {
 }
 
 function loveRain() {
-  if (!magicActive) return;
-
   const love = document.createElement("div");
   love.className = "love";
   love.innerText = "I love you ❤️❤️";
@@ -31,8 +30,8 @@ function loveRain() {
   love.style.opacity = Math.random();
   love.style.pointerEvents = "none";
   love.style.animation = "fallLove 6s linear";
-
   document.body.appendChild(love);
+
   setTimeout(() => love.remove(), 6000);
 }
 
@@ -44,7 +43,8 @@ function activateMagic() {
   if (container) container.classList.add("magic-active");
 
   startSparkles();
-  setInterval(loveRain, 500);
+
+  rainInterval = setInterval(loveRain, 500);
 }
 
 window.addEventListener("message", (e) => {
@@ -52,7 +52,10 @@ window.addEventListener("message", (e) => {
 });
 
 window.addEventListener("load", () => {
-  if (magicActive) startSparkles();
+  if (magicActive) {
+    startSparkles();
+    if (!rainInterval) rainInterval = setInterval(loveRain, 500);
+  }
 });
 
 // Animations
